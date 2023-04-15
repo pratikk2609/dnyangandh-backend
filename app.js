@@ -41,6 +41,20 @@ app.post("/user", async (req, res) => {
       return res.status(400).send(e);
     }
 })
+app.post("/user/authenticate", async (req, res) => {
+    try {
+        const getuser = await UserInfo.find({username: req.body.username, password: req.body.password});
+        console.log(getuser)
+        if(getuser.length>0){
+            res.send("logged in successfully")
+        }
+        else {
+            res.send('user not found')
+        }
+      } catch (e) {
+        return res.status(400).send(e);
+      }
+  })
 
 app.delete('/user/:id', async (req, res) => {
     try {
