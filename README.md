@@ -14,3 +14,13 @@ object
     "phone_number" : 1234,
     "role" : "student"
 }
+
+For backend
+
+npm i -g pm2
+
+To install node js in ubuntu
+sudo apt update
+sudo apt install node.js
+node -v
+sudo apt install npm
