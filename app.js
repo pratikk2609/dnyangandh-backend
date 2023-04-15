@@ -4,7 +4,7 @@ const app = express()
 app.get("/",(req, res)=>{
     console.log("hello")
     res.json({
-        msg:"Hello from backend message again"
+        msg:"Hello from backend message again. Hello"
     })
 })
 
