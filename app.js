@@ -4,8 +4,9 @@ var mongoose = require('mongoose');
 const UserInfo = require('./User');
 var app = express();
 app.use(bodyparser.json());
+var cors = require('cors')
 
-
+app.use(cors())
 mongoose
      .connect("mongodb+srv://saileekadam03:IJRlbOARQElkz34Q@cluster0.goi2zn4.mongodb.net/?retryWrites=true&w=majority", 
      { useNewUrlParser: true, useUnifiedTopology: true })
