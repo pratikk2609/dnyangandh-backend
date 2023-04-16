@@ -8,7 +8,7 @@ var cors = require('cors')
 
 app.use(cors())
 mongoose
-    .connect("mongodb+srv://saileekadam03:IJRlbOARQElkz34Q@cluster0.goi2zn4.mongodb.net/?retryWrites=true&w=majority",
+    .connect("mongodb+srv://dnymongouser:T1ecxWrF8BltRV22@dnycluster.fqou9ey.mongodb.net/?retryWrites=true&w=majority",
         { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Database Connected'))
     .catch(err => console.log(err));
