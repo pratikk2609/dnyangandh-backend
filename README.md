@@ -17,11 +17,11 @@ object
 
 For backend
 
-To install node js in ubuntu
-sudo apt update
-sudo apt install node.js
-node -v
-sudo apt install npm
-sudo npm install -g pm2
-sudo pm2 start filename.js
-sudo kill -9 `sudo lsof -t -i:5555`
+-To install node js in ubuntu
+-sudo apt update
+-sudo apt install node.js
+-node -v
+-sudo apt install npm
+-sudo npm install -g pm2
+-sudo pm2 start filename.js
+-sudo kill -9 `sudo lsof -t -i:5555`
