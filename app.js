@@ -2,6 +2,7 @@ const express = require("express")
 var bodyparser = require('body-parser');
 var mongoose = require('mongoose');
 const UserInfo = require('./User');
+const ScholarshipInfo = require('./scholarship')
 var app = express();
 app.use(bodyparser.json());
 var cors = require('cors')
@@ -18,6 +19,63 @@ app.get("/", (req, res) => {
     res.json({
         msg: "Hello from backend message again. Hello Team"
     })
+})
+
+app.get("/scholarship", async (req, res) => {
+    try {
+        const getuser = await ScholarshipInfo.find({});
+        //console.log(getuser)
+        //console.log("All the users in the database")
+        return res.send(getuser);
+    } catch (e) {
+        return res.status(400).send(e);
+    }
+
+})
+
+app.post("/scholarship", async (req, res) => {
+    try {
+        console.log(req);
+        const addSch = new ScholarshipInfo(req.body)
+        //console.log(req.body);
+        //console.log("New User Added in the Database");
+        const newSch = await addSch.save();
+        return res.status(201).send(newSch);
+    } catch (e) {
+        return res.status(400).send(e);
+    }
+
+
+})
+app.delete("/scholarship/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const data = await ScholarshipInfo.findByIdAndDelete(id)
+        console.log("Record Deleted")
+        res.send(`Document with ${data.name} has been deleted..`)
+    }
+    catch (error) {
+        res.status(400).json({ message: error.message })
+    }
+
+})
+app.patch("/scholarship", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const updatedData = req.body;
+        const options = { new: true };
+
+        const user_update = await ScholarshipInfo.findByIdAndUpdate(
+            id, updatedData, options
+        )
+        console.log(user_update)
+        console.log("Updated the required the details")
+        res.send(user_update)
+    }
+    catch (error) {
+        res.status(400).json({ message: error.message })
+    }
+
 })
 
 app.get("/user", async (req, res) => {
